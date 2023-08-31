@@ -30,9 +30,15 @@ build/Release
 # Dependency directories
 node_modules
 jspm_packages
+db
 
 # Optional npm cache directory
 .npm
 
 # Optional REPL history
 .node_repl_history
+
+.env
+.env.example
+.env.local
+.env.staging
