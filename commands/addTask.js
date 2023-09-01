@@ -51,3 +51,38 @@ const askQuestions = async() => {
 // Testing for multple questions
 // const output2 = await askQuestions();
 // console.log(output2);
+
+
+// Sending to db
+
+export default async function addTask() {
+  try{
+    // Calling askQuestions() function to get array todo's
+    const userResponse = await askQuestions();
+
+    // connecting to db
+    await connectDB();
+
+    // Displaying a spinner with text
+    let spinner = ora('Creating the todos...').start();
+
+    // Loop over every todo in the userResponse array
+    // sending/saving each todo in the database
+    for(let i=0; i<userResponse.length; i++){
+      const response = userResponse[i];
+      await Todos.create(response);
+    }
+
+    // Stopping the spinner and show success message
+    spinner.stop();
+    console.log(chalk.greenBright('Create the todos!'))
+
+    // Disconnect the db
+    await disconnectDB();
+  }
+  catch (error) {
+    // Error Handling
+    console.log('Something went wrong, Error: ', error)
+    process.exit(1);
+  }
+}
