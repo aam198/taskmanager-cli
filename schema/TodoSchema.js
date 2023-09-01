@@ -34,4 +34,14 @@ const TodoSchema = new mongoose.Schema({
   }
 }, 
 // Configuration option to add timestamp fields createdAt, updatedAt to tasks when created or modified.
-{timestamps: true})
+{timestamps: true});
+
+// Pre-save hook/function which runs everytime before a task gets saved to update the task with an ID.
+TodoSchema.pre('save', function(next){
+  this.code = nanoid(10);
+  next();
+});
+
+// Creating a Todos Model using TodoSchema blueprint and export
+const Todos = mongoose.model('Todos', TodoSchema);
+export default Todos;
