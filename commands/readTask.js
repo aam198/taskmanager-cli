@@ -19,6 +19,22 @@ export default async function readTask() {
 
     // stopping the spinner
     spinner.stop();
+
+    // check if todos exist or not
+    if(todos.length === 0){
+      console.log(chalk.blueBright('You do not have any tasks yet!'))
+    }
+    else {
+      todos.forEach(todo => {
+        console.log(
+          chalk.cyanBright('Todo Code: ') + todo.code + '/n' +
+          chalk.blueBright('Name: ') + todo.name + '\n' + 
+          chalk.yellowBright('Description: ') + todo.detail + '\n'
+        )
+      })
+    }
+    // disconnect from the database
+    await disconnectDB();
   }
   catch (error) {
     // Error Handling
@@ -26,3 +42,5 @@ export default async function readTask() {
     process.exit(1);
   }
 }
+
+readTask();
