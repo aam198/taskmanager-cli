@@ -47,7 +47,7 @@ export default async function deleteTask(){
     if(response.deletedCount === 0){
       console.log(chalk.redBright('Could not find any todo matching the provided name. Deletion failed.'))
     } else {
-      console.log(chalk.greenBright('Deleted Task Successfully'))
+      console.log(chalk.greenBright('Succesfully deleted task'))
     }
 
     // Disconnecting from the database
