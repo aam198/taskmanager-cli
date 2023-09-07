@@ -1,7 +1,7 @@
 import { connectDB, disconnectDB } from '../db/connectDB.js';
 import Todos from '../schema/TodoSchema.js';
 import chalk from 'chalk';
-import ora from 'ora'
+import ora from 'ora';
 
 
 // Logic for reading tasks 
@@ -15,7 +15,7 @@ export default async function readTask() {
     const spinner = ora('Fetching all todos...').start();
 
     // fetching all the todos from the database
-    const todos = await Todos.findOne({});
+    const todos = await Todos.find({});
 
     // stopping the spinner
     spinner.stop();
@@ -27,7 +27,7 @@ export default async function readTask() {
     else {
       todos.forEach(todo => {
         console.log(
-          chalk.cyanBright('Todo Code: ') + todo.code + '/n' +
+          chalk.cyanBright('Todo Code: ') + todo.code + '\n' +
           chalk.blueBright('Name: ') + todo.name + '\n' + 
           chalk.yellowBright('Description: ') + todo.detail + '\n'
         )

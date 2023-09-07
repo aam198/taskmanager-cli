@@ -25,10 +25,10 @@ const askQuestions = async() => {
   const todoArray= [];
   let loop = false;
 
-  do{
+  do {
     const userRes = await input();
     // Push to todoArray
-    todoArray.push(userRes);
+    todoArray.push(userRes)
 
     // Once input() function is hit then asks user if there are more tasks
     const confirmQ = await inquirer.prompt([
@@ -53,24 +53,24 @@ const askQuestions = async() => {
 // console.log(output2);
 
 
-// Sending to db
+// Sending to db 
 
 export default async function addTask() {
   try{
     // Calling askQuestions() function to get array todo's
-    const userResponse = await askQuestions();
+    const userResponse = await askQuestions()
 
     // connecting to db
-    await connectDB();
+    await connectDB()
 
     // Displaying a spinner with text
-    let spinner = ora('Creating the todos...').start();
+    let spinner = ora('Creating the todos...').start()
 
     // Loop over every todo in the userResponse array
     // sending/saving each todo in the database
     for(let i=0; i<userResponse.length; i++){
       const response = userResponse[i];
-      await Todos.create(response);
+      await Todos.create(response)
     }
 
     // Stopping the spinner and show success message
@@ -78,11 +78,13 @@ export default async function addTask() {
     console.log(chalk.greenBright('Create the todos!'))
 
     // Disconnect the db
-    await disconnectDB();
+    await disconnectDB()
   }
   catch (error) {
     // Error Handling
     console.log('Something went wrong, Error: ', error)
-    process.exit(1);
+    process.exit(1)
   }
 }
+
+addTask()
