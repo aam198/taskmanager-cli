@@ -1,4 +1,4 @@
-import { connectDB, disconnectDB } from './db/connectDB.js';
+import { connectDB, disconnectDB } from '../db/connectDB.js';
 import Todos from '../schema/TodoSchema.js';
 import chalk from 'chalk';
 import ora from 'ora'
