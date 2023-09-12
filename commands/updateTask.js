@@ -59,10 +59,20 @@ export default async function updateTask(){
         // Deleting the todo
         await Todos.deleteOne({_id: todo._id})
 
-        
+        // Stopping the spinner and display success message
+        spinner.stop()
+        console.log(chalk.greenBright('Deleted the todo.'))
+      } else {
+        // Update the todo
+        spinner.text = 'Updating the todo'
+        spinner.start()
+        await Todos.updateOne({_id: todo._id}, update, {runValidators: true})
+        spinner.stop()
+        console.log(chalk.greenBright('Updated the todo!'))
       }
     }
-
+    // Disconnecting from the database
+    await disconnectDB()
   }
   catch (error){
     // Error Handling
