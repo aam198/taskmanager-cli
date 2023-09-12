@@ -25,6 +25,7 @@ export default async function readTask() {
       console.log(chalk.blueBright('You do not have any tasks yet!'))
     }
     else {
+      // Listing out each todo with following information
       todos.forEach(todo => {
         console.log(
           chalk.cyanBright('Todo Code: ') + todo.code + '\n' +

@@ -8,15 +8,15 @@ import { get } from "mongoose";
 
 export async function getTaskCode(){
   try {
-    // Prompt user to enter code of todo they want to delete with inquirer
-    const answers = await inquirer.prompt([
+    // Prompt user to enter single code of todo they want to delete with inquirer
+    const answer = await inquirer.prompt([
       {name: 'code', 'message': 'Enter the code of the todo: ', type: 'input'},
     ])
     // Triming user's response so that the todo code does not contain starting or trailing white spaces
-    answers.code = answers.code.trim();
+    answer.code = answer.code.trim();
     
     // Return so deleteTask can use it 
-    return answers;
+    return answer;
   }
   catch (error){
     console.log('Something went wrong...\n', error)
