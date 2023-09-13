@@ -26,7 +26,7 @@ async function askUpdateQ(todo){
 
 export default async function updateTask(){
   try{
-    // Getting task code entered by user by calling getTaskCode() method from deleteTask.js export modoule
+    // Getting returned response, the task code entered by user by calling getTaskCode() method from deleteTask.js export module 
     const userCode = await getTaskCode();
 
     // Connect to the database
@@ -35,7 +35,7 @@ export default async function updateTask(){
     // Starting the spinner while grabbing todo
     const spinner = ora('Finding the todo...').start()
 
-    // Finding the todo which the user wants to update
+    // Using .findOne() MongoDB Method. Finding the specific todo which the user wants to update
     const todo = await Todos.findOne({ code: userCode.code })
 
     // Stopping the spinner
