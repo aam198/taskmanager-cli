@@ -56,7 +56,7 @@ export default async function updateTask(){
         spinner.text = 'Deleting the todo...'
         spinner.start()
 
-        // Deleting the todo
+        // Deleting the todo if marked complete
         await Todos.deleteOne({_id: todo._id})
 
         // Stopping the spinner and display success message
