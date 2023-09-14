@@ -63,9 +63,10 @@ export default async function updateTask(){
         spinner.stop()
         console.log(chalk.greenBright('Deleted the todo.'))
       } else {
-        // Update the todo
+        // Update the todo if not marked as 'completed'
         spinner.text = 'Updating the todo'
         spinner.start()
+        // takes in 3 parameters – Query Object, Update Object, and the Options object
         await Todos.updateOne({_id: todo._id}, update, {runValidators: true})
         spinner.stop()
         console.log(chalk.greenBright('Updated the todo!'))
@@ -80,3 +81,4 @@ export default async function updateTask(){
     process.exit(1)
   }
 }
+updateTask()

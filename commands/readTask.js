@@ -29,8 +29,9 @@ export default async function readTask() {
       todos.forEach(todo => {
         console.log(
           chalk.cyanBright('Todo Code: ') + todo.code + '\n' +
-          chalk.blueBright('Name: ') + todo.name + '\n' + 
-          chalk.yellowBright('Description: ') + todo.detail + '\n'
+          chalk.magentaBright('Name: ') + todo.name + '\n' + 
+          chalk.blueBright('Description: ') + todo.detail + '\n' +
+          chalk.rgb(255, 136, 0)('Status: ') + todo.status + '\n'
         )
       })
     }
