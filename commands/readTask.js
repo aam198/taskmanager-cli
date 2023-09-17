@@ -45,4 +45,5 @@ export default async function readTask() {
   }
 }
 
-readTask();
+// For testing
+// readTask();
